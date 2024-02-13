@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "djangoapp",
     "rest_framework",
     "drf_yasg",
-    "rest_framework_swagger"
 ]
 
 SWAGGER_SETTINGS = {
