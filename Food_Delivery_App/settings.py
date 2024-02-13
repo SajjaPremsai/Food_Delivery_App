@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "djangoapp",
     "rest_framework",
-    "drf_yasg"
+    "drf_yasg",
+    "rest_framework_swagger"
 ]
 
 SWAGGER_SETTINGS = {
