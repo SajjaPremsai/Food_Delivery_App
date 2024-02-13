@@ -4,16 +4,16 @@ from rest_framework.decorators import api_view , parser_classes
 
 from .models import Item , Organization , Pricing
 from .serializers import ItemSerializer ,OrganizationSerializer , PricingSerializer , PricingRequestSerializer
-# from rest_framework.parsers import JSONParser
-# from drf_yasg.utils import swagger_auto_schema
-# from rest_framework.generics import GenericAPIView
+from rest_framework.parsers import JSONParser
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework.generics import GenericAPIView
 
 
-class DeliveryCharge(APIView):
+class DeliveryCharge(GenericAPIView):
     serializer_class = PricingRequestSerializer
-    # @swagger_auto_schema(operation_description="This API calculates the Delivery price for the given information")
+    @swagger_auto_schema(operation_description="This API calculates the Delivery price for the given information")
     def post(self, request):
-        serializer = PricingRequestSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
             obj = Pricing.objects.filter(item__type=data['item_type'],zone=data['zone'],organization_id=data['organization_id']).values_list('organization_id', flat=True).distinct()
@@ -31,18 +31,18 @@ class DeliveryCharge(APIView):
             return Response(serializer.errors)
 
 
-class Create_Organizations(APIView):
+class Create_Organizations(GenericAPIView):
     serializer_class = OrganizationSerializer
     
-    # @swagger_auto_schema(operation_description="This API gets the all the Organizations data")
+    @swagger_auto_schema(operation_description="This API gets the all the Organizations data")
     def get(self, request):
         queryset = self.get_queryset()
-        serializer = OrganizationSerializer(queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
     
-    # @swagger_auto_schema(operation_description="This API creates a new organization")
+    @swagger_auto_schema(operation_description="This API creates a new organization")
     def post(self, request):
-        serializer = OrganizationSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             return Response(serializer.data)
@@ -53,18 +53,18 @@ class Create_Organizations(APIView):
         return Organization.objects.all()
 
 
-class Create_Items(APIView):
+class Create_Items(GenericAPIView):
     serializer_class = ItemSerializer
     
-    # @swagger_auto_schema(operation_description="This API gets the all the create items")
+    @swagger_auto_schema(operation_description="This API gets the all the create items")
     def get(self, request):
         queryset = self.get_queryset()
-        serializer = ItemSerializer(queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
     
-    # @swagger_auto_schema(operation_description="This API creates a new item")
+    @swagger_auto_schema(operation_description="This API creates a new item")
     def post(self, request):
-        serializer = ItemSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             return Response(serializer.data)
@@ -75,18 +75,18 @@ class Create_Items(APIView):
         return Item.objects.all()
 
 
-class Create_Pricing(APIView):
+class Create_Pricing(GenericAPIView):
     serializer_class = PricingSerializer
     
-    # @swagger_auto_schema(operation_description="This API creates a new item")
+    @swagger_auto_schema(operation_description="This API creates a new item")
     def get(self, request):
         queryset = self.get_queryset()
-        serializer = PricingSerializer(queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
     
-    # @swagger_auto_schema(operation_description="This API creates a new pricing structure to a organization")
+    @swagger_auto_schema(operation_description="This API creates a new pricing structure to a organization")
     def post(self, request):
-        serializer = PricingSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             return Response(serializer.data)
