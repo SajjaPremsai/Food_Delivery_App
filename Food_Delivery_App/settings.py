@@ -45,16 +45,6 @@ INSTALLED_APPS = [
     "drf_yasg",
 ]
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'basic': {
-            'type': 'http',
-            'scheme': 'basic'
-        }
-    },
-    'USE_SESSION_AUTHENTICATION': False, 
-    'PERSIST_AUTH': True,  
-}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -105,21 +95,22 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+# Swagger settings
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False,  # Controls if the view should use sessions for authentication.
-    'SECURITY_DEFINITIONS': {  # Definitions of security schemes.
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
         'basic': {
             'type': 'basic'
         }
     },
-    'VALIDATOR_URL': None,  # URL used by the Swagger UI to validate specs.
-    'DEFAULT_MODEL_DEPTH': -1,  # Default depth for the ModelSerializer class used by the serializers. 
-    'DEFAULT_PAGINATOR_INSPECTORS': [  # Default paginator inspector classes used by the DRFAutoSchema.
+    'VALIDATOR_URL': None,
+    'DEFAULT_MODEL_DEPTH': -1,
+    'DEFAULT_PAGINATOR_INSPECTORS': [
         'rest_framework.pagination.PageNumberPagination',
         'rest_framework.pagination.LimitOffsetPagination',
         'rest_framework.pagination.CursorPagination',
     ],
-    'DEFAULT_FILTER_INSPECTORS': [  # Default filter inspector classes used by the DRFAutoSchema.
+    'DEFAULT_FILTER_INSPECTORS': [
         'drf_yasg.inspectors.CoreAPICompatInspector',
         'drf_yasg.inspectors.ReferencingSerializerInspector',
         'drf_yasg.inspectors.ChoiceFieldInspector',
@@ -132,7 +123,7 @@ SWAGGER_SETTINGS = {
         'drf_yasg.inspectors.BasicTypeInspector',
         'drf_yasg.inspectors.InstanceTypeInspector',
     ],
-    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',  # Default AutoSchema class used by the view.
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
 }
 
 
@@ -168,7 +159,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
