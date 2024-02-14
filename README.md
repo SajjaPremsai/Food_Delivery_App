@@ -36,13 +36,21 @@ POST /organizations/
 {
   "name": "Example Organization"
 }
+```
 
+### Create Items
+
+```json
 POST /items/
 {
   "type": "perishable",
   "description": "Example Perishable Item"
 }
+```
 
+### Create Pricing
+
+```json
 POST /pricing/
 {
   "organization": 1,
@@ -52,7 +60,10 @@ POST /pricing/
   "km_price": 1.5,
   "fix_price": 10.0
 }
+```
+### Create DeliveryCharge
 
+```json
 POST /delivery-charge/
 {
   "organization_id": 1,
@@ -60,4 +71,4 @@ POST /delivery-charge/
   "zone": "East",
   "total_distance": 10
 }
-
+```
