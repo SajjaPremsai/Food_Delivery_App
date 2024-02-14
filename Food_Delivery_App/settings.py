@@ -105,6 +105,38 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Controls if the view should use sessions for authentication.
+    'SECURITY_DEFINITIONS': {  # Definitions of security schemes.
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'VALIDATOR_URL': None,  # URL used by the Swagger UI to validate specs.
+    'DEFAULT_MODEL_DEPTH': -1,  # Default depth for the ModelSerializer class used by the serializers. 
+    'DEFAULT_PAGINATOR_INSPECTORS': [  # Default paginator inspector classes used by the DRFAutoSchema.
+        'rest_framework.pagination.PageNumberPagination',
+        'rest_framework.pagination.LimitOffsetPagination',
+        'rest_framework.pagination.CursorPagination',
+    ],
+    'DEFAULT_FILTER_INSPECTORS': [  # Default filter inspector classes used by the DRFAutoSchema.
+        'drf_yasg.inspectors.CoreAPICompatInspector',
+        'drf_yasg.inspectors.ReferencingSerializerInspector',
+        'drf_yasg.inspectors.ChoiceFieldInspector',
+        'drf_yasg.inspectors.FileFieldInspector',
+        'drf_yasg.inspectors.HiddenFieldInspector',
+        'drf_yasg.inspectors.JSONFieldInspector',
+        'drf_yasg.inspectors.RelatedFieldInspector',
+        'drf_yasg.inspectors.SerializerInspector',
+        'drf_yasg.inspectors.StringDefaultInspector',
+        'drf_yasg.inspectors.BasicTypeInspector',
+        'drf_yasg.inspectors.InstanceTypeInspector',
+    ],
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',  # Default AutoSchema class used by the view.
+}
+
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
