@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view , parser_classes
 
 from .models import Item , Organization , Pricing
-from .serializers import ItemSerializer ,OrganizationSerializer , PricingSerializer , PricingRequestSerializer
+from .serializers import ItemSerializer ,OrganizationSerializer, PostPricingSerializer , PricingSerializer , PricingRequestSerializer
 from rest_framework.parsers import JSONParser
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.generics import GenericAPIView
@@ -86,7 +86,7 @@ class Create_Pricing(GenericAPIView):
     
     @swagger_auto_schema(operation_description="This API creates a new pricing structure to a organization")
     def post(self, request):
-        serializer = self.get_serializer(data=request.data)
+        serializer = PostPricingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
