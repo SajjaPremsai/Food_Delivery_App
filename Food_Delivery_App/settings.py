@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-%_vv-unc&o9-&xpb5m2-msz$3g1g_rn736jb2dx@awxet507ba"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -103,38 +103,38 @@ DATABASES = {
 
 # Swagger settings
 
-SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH':False,
-}
 # SWAGGER_SETTINGS = {
-#     'USE_SESSION_AUTH': False,
-#     'SECURITY_DEFINITIONS': {
-#         'basic': {
-#             'type': 'basic'
-#         }
-#     },
-#     'VALIDATOR_URL': None,
-#     'DEFAULT_MODEL_DEPTH': -1,
-#     'DEFAULT_PAGINATOR_INSPECTORS': [
-#         'rest_framework.pagination.PageNumberPagination',
-#         'rest_framework.pagination.LimitOffsetPagination',
-#         'rest_framework.pagination.CursorPagination',
-#     ],
-#     'DEFAULT_FILTER_INSPECTORS': [
-#         'drf_yasg.inspectors.CoreAPICompatInspector',
-#         'drf_yasg.inspectors.ReferencingSerializerInspector',
-#         'drf_yasg.inspectors.ChoiceFieldInspector',
-#         'drf_yasg.inspectors.FileFieldInspector',
-#         'drf_yasg.inspectors.HiddenFieldInspector',
-#         'drf_yasg.inspectors.JSONFieldInspector',
-#         'drf_yasg.inspectors.RelatedFieldInspector',
-#         'drf_yasg.inspectors.SerializerInspector',
-#         'drf_yasg.inspectors.StringDefaultInspector',
-#         'drf_yasg.inspectors.BasicTypeInspector',
-#         'drf_yasg.inspectors.InstanceTypeInspector',
-#     ],
-#     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
+#     'USE_SESSION_AUTH':False,
 # }
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'VALIDATOR_URL': None,
+    'DEFAULT_MODEL_DEPTH': -1,
+    'DEFAULT_PAGINATOR_INSPECTORS': [
+        'rest_framework.pagination.PageNumberPagination',
+        'rest_framework.pagination.LimitOffsetPagination',
+        'rest_framework.pagination.CursorPagination',
+    ],
+    'DEFAULT_FILTER_INSPECTORS': [
+        'drf_yasg.inspectors.CoreAPICompatInspector',
+        'drf_yasg.inspectors.ReferencingSerializerInspector',
+        'drf_yasg.inspectors.ChoiceFieldInspector',
+        'drf_yasg.inspectors.FileFieldInspector',
+        'drf_yasg.inspectors.HiddenFieldInspector',
+        'drf_yasg.inspectors.JSONFieldInspector',
+        'drf_yasg.inspectors.RelatedFieldInspector',
+        'drf_yasg.inspectors.SerializerInspector',
+        'drf_yasg.inspectors.StringDefaultInspector',
+        'drf_yasg.inspectors.BasicTypeInspector',
+        'drf_yasg.inspectors.InstanceTypeInspector',
+    ],
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
+}
 
 
 

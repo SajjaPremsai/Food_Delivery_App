@@ -44,7 +44,7 @@ class Create_Organizations(GenericAPIView):
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            self.perform_create(serializer)
+            serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
@@ -66,7 +66,7 @@ class Create_Items(GenericAPIView):
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            self.perform_create(serializer)
+            serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
@@ -88,7 +88,7 @@ class Create_Pricing(GenericAPIView):
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            self.perform_create(serializer)
+            serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
