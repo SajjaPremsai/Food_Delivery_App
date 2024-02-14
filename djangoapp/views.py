@@ -76,17 +76,17 @@ class Create_Items(GenericAPIView):
 
 
 class Create_Pricing(GenericAPIView):
-    serializer_class = PricingSerializer
+    serializer_class = PostPricingSerializer
     
     @swagger_auto_schema(operation_description="This API creates a new item")
     def get(self, request):
         queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
+        serializer = PricingSerializer(queryset, many=True)
         return Response(serializer.data)
     
     @swagger_auto_schema(operation_description="This API creates a new pricing structure to a organization")
     def post(self, request):
-        serializer = PostPricingSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
