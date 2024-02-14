@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "djangoapp",
     "rest_framework",
     "drf_yasg",
+    'corsheaders'
 ]
 
 
@@ -55,9 +56,13 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = "Food_Delivery_App.urls"
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 TEMPLATES = [
     {
@@ -152,9 +157,9 @@ AUTH_PASSWORD_VALIDATORS = [
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,"static")
-]
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR,"static")
+# ]
 
 
 # Internationalization
